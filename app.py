@@ -5,11 +5,11 @@ from db import init_db, mysql
 
 app = Flask(__name__)
 
-init_db(app)
+mysql = init_db(app)
 
 @app.route('/')
 def index():
-    cur = mysql.connection.cursor() 
+    cur = mysql.connection.cursor()
     cur.execute("Select * from table")
     return render_template('index.html')
 

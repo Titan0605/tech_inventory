@@ -11,3 +11,4 @@ def init_db(app):
     app.config['MYSQL_PORT'] = 3306
     app.config['MYSQL_CURSORCLASS'] = 'DictCursor'  # Para obtener resultados en formato diccionario
     mysql = MySQL(app)
+    return mysql
