@@ -21,4 +21,5 @@ def create_app(config_class = Config):
     
     app.register_blueprint(suma.bp)
     app.register_blueprint(home.bp)
+    
     return app

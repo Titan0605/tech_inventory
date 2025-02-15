@@ -1,4 +1,7 @@
 /env
 /app/__pycache__
+/app/static/__pycache__
+/app/templates/__pycache__
+/__pycache__
 Documentation.md
 /app/routes/__pycache__
