@@ -1,3 +1,5 @@
 /env
 /__pycache__
 Documentation.md
+/config/__pycache__
+/routes/__pycache__
