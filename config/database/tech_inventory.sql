@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 13-02-2025 a las 20:32:25
+-- Tiempo de generación: 17-02-2025 a las 00:05:42
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -32,6 +32,22 @@ CREATE TABLE `tbrands` (
   `brand_name` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Volcado de datos para la tabla `tbrands`
+--
+
+INSERT INTO `tbrands` (`id_brand`, `brand_name`) VALUES
+(2, 'Acer'),
+(3, 'Apple'),
+(1, 'Asus'),
+(4, 'Dell'),
+(5, 'HP'),
+(7, 'Lenovo'),
+(6, 'LG'),
+(8, 'Microsoft'),
+(9, 'Samsung'),
+(10, 'Sony');
+
 -- --------------------------------------------------------
 
 --
@@ -43,6 +59,17 @@ CREATE TABLE `tcategorys` (
   `category_name` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Volcado de datos para la tabla `tcategorys`
+--
+
+INSERT INTO `tcategorys` (`id_category`, `category_name`) VALUES
+(1, 'Accesorios'),
+(2, 'Laptops'),
+(3, 'Monitores'),
+(4, 'Smartphones'),
+(5, 'Tablets');
+
 -- --------------------------------------------------------
 
 --
@@ -53,6 +80,17 @@ CREATE TABLE `tlocations` (
   `id_location` int(11) NOT NULL,
   `location_name` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `tlocations`
+--
+
+INSERT INTO `tlocations` (`id_location`, `location_name`) VALUES
+(1, 'Almacen Principal'),
+(2, 'Bodega Externa'),
+(3, 'Sucursal Norte'),
+(4, 'Sucursal Sur'),
+(5, 'Tienda Central');
 
 -- --------------------------------------------------------
 
@@ -88,6 +126,16 @@ CREATE TABLE `tstates` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
+-- Volcado de datos para la tabla `tstates`
+--
+
+INSERT INTO `tstates` (`id_state`, `state_name`) VALUES
+(1, 'Abierto pero sin usar'),
+(2, 'Exposicion'),
+(3, 'Nuevo'),
+(4, 'Reacondicionado');
+
+--
 -- Índices para tablas volcadas
 --
 
@@ -95,19 +143,22 @@ CREATE TABLE `tstates` (
 -- Indices de la tabla `tbrands`
 --
 ALTER TABLE `tbrands`
-  ADD PRIMARY KEY (`id_brand`);
+  ADD PRIMARY KEY (`id_brand`),
+  ADD UNIQUE KEY `brand_name` (`brand_name`);
 
 --
 -- Indices de la tabla `tcategorys`
 --
 ALTER TABLE `tcategorys`
-  ADD PRIMARY KEY (`id_category`);
+  ADD PRIMARY KEY (`id_category`),
+  ADD UNIQUE KEY `category_name` (`category_name`);
 
 --
 -- Indices de la tabla `tlocations`
 --
 ALTER TABLE `tlocations`
-  ADD PRIMARY KEY (`id_location`);
+  ADD PRIMARY KEY (`id_location`),
+  ADD UNIQUE KEY `location_name` (`location_name`);
 
 --
 -- Indices de la tabla `tproducts`
@@ -123,17 +174,42 @@ ALTER TABLE `tproducts`
 -- Indices de la tabla `tstates`
 --
 ALTER TABLE `tstates`
-  ADD PRIMARY KEY (`id_state`);
+  ADD PRIMARY KEY (`id_state`),
+  ADD UNIQUE KEY `state_name` (`state_name`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
 --
+-- AUTO_INCREMENT de la tabla `tbrands`
+--
+ALTER TABLE `tbrands`
+  MODIFY `id_brand` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT de la tabla `tcategorys`
+--
+ALTER TABLE `tcategorys`
+  MODIFY `id_category` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT de la tabla `tlocations`
+--
+ALTER TABLE `tlocations`
+  MODIFY `id_location` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT de la tabla `tproducts`
 --
 ALTER TABLE `tproducts`
   MODIFY `id_product` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `tstates`
+--
+ALTER TABLE `tstates`
+  MODIFY `id_state` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Restricciones para tablas volcadas
