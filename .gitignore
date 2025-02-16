@@ -1,7 +1,10 @@
 /env
-/app/__pycache__
-/app/static/__pycache__
-/app/templates/__pycache__
+/.venv
+/__pycache__
+/static/__pycache__
+/templates/__pycache__
 /__pycache__
 Documentation.md
-/app/routes/__pycache__
+/routes/__pycache__
+/config/__pycache__
+/services/__pycache__
