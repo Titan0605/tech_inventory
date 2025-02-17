@@ -2,9 +2,11 @@ import os, csv
 
 def readCSV ():
     inventory_array = ''
-    path = os.path.dirname(__file__)
-    file_path = os.path.join(path,'tech_inventory.csv')
-    print(file_path)
+    # path = os.path.dirname(__file__)
+    # file_path = os.path.join(path,'tech_inventory.csv')
+    
+    file_path = './data/tech_inventory.csv'
+    # print(file_path)
     
     if os.path.exists(file_path):
         print('File exists')
