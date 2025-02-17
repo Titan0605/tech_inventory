@@ -3,12 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/styles.css">
     <title>Presentation</title>
 </head>
 <body>
-    <h1>Tech inventory</h1>
-    <button id="getInventoryBtn">Insert inventory to the Database</button>
-
+    <header></header>
+    <main>
+        <section class="button_section">
+            <h1 class="tittle">Tech inventory</h1>
+            <button id="getInventoryBtn">Insert inventory to the Database</button>
+        </section>
+    </main>
+    <footer></footer>
     <script src="{{ url_for('static', filename='js/inventory.js') }}"></script>
 </body>
 </html>

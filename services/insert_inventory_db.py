@@ -17,11 +17,6 @@ def insert_inventory_data(inventory):
     id_state = None
     id_location = None
     
-    print(brands)
-    print(categories)
-    print(states)
-    print(locations)
-    
     try:
         for item in inventory:
             try:                   
