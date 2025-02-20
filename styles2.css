@@ -1,0 +1,40 @@
+* {
+    margin: 0rem;
+    padding: 0rem;
+    border: 0rem;
+}
+
+html {
+    size: 14px;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    /* background-color: #222222; */
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+main {
+    flex-grow: 1;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 1rem;
+}
+
+/* .btn-primary {
+    background-color: aqua !important;
+} */

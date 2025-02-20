@@ -1,14 +1,37 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Presentation</title>
-</head>
-<body>
-    <h1>Tech inventory</h1>
-    <button id="getInventoryBtn">Insert inventory to the Database</button>
+{% extends 'layouts/layout.html' %}
 
-    <script src="{{ url_for('static', filename='js/inventory.js') }}"></script>
-</body>
-</html>
+{% block title%}FUNCIONA{% endblock%}
+{% block content%}
+<button id="getInventoryBtn">Insert inventory to the Database</button>
+<table id="myTable">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Brand</th>
+            <th>SKU</th>
+            <th>Product</th>
+            <th>Category</th>
+            <th>Price</th>
+            <th>Price with Discount</th>
+            <th>Stock</th>
+            <th>State</th>
+            <th>Location</th>
+            <th>Warranty (Months)</th>
+            <th>Last Update</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for device in devices_list %}
+        <tr>
+            <td>{{ product[''] }}</td>
+            <td>{{ product[''] }}</td>
+            <td>{{ product[''] }}</td>
+            <td>{{ product[''] }}</td>
+            <td>{{ product[''] }}</td>
+            <td>{{ product[''] }}</td>
+            <td><button id="toEdit" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#updateGameModal"><i class="fa-solid fa-pen" style="color: #f2d15a;"></i></button> <button id="toDelete" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#deleteGameModal"><i class="fa-solid fa-trash" style="color: #ea1a1a;"></i></button></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock%}
