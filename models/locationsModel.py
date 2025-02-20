@@ -1,8 +1,9 @@
 from utils.db_utils import get_cursor
-class BrandModel:
+
+class LocationModel:
     def __init__(self):
         self.cur = None
-        
+
     def openCursor(self):
         if not self.cur:
             self.cur = get_cursor()
@@ -12,20 +13,20 @@ class BrandModel:
             self.cur.close()
             self.cur = None
         
-    def getBrands(self):
+    def getLocations(self):
         try:
             self.openCursor()
-            query = """SELECT * FROM tbrands ORDER BY id_brand"""
+            query = """SELECT * FROM tlocations ORDER BY id_location"""
             self.cur.execute(query)
             return self.cur.fetchall()
         finally:
             self.closeCursor()
-    
-    def getBrandWithId(self, id_brand):
+
+    def getLocationWithId(self, id_location):
         try:
             self.openCursor()
-            query = """SELECT brand_name FROM tbrands WHERE id_brand = %s"""
-            self.cur.execute(query, (id_brand,))
+            query = """SELECT location_name FROM tlocations WHERE id_location = %s"""
+            self.cur.execute(query, (id_location,))
             return self.cur.fetchone()
         finally:
             self.closeCursor()
