@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-02-2025 a las 00:05:42
+-- Tiempo de generación: 21-02-2025 a las 03:42:01
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -37,9 +37,9 @@ CREATE TABLE `tbrands` (
 --
 
 INSERT INTO `tbrands` (`id_brand`, `brand_name`) VALUES
+(1, 'Asus'),
 (2, 'Acer'),
 (3, 'Apple'),
-(1, 'Asus'),
 (4, 'Dell'),
 (5, 'HP'),
 (7, 'Lenovo'),
@@ -51,19 +51,19 @@ INSERT INTO `tbrands` (`id_brand`, `brand_name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tcategorys`
+-- Estructura de tabla para la tabla `tcategories`
 --
 
-CREATE TABLE `tcategorys` (
+CREATE TABLE `tcategories` (
   `id_category` int(11) NOT NULL,
   `category_name` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `tcategorys`
+-- Volcado de datos para la tabla `tcategories`
 --
 
-INSERT INTO `tcategorys` (`id_category`, `category_name`) VALUES
+INSERT INTO `tcategories` (`id_category`, `category_name`) VALUES
 (1, 'Accesorios'),
 (2, 'Laptops'),
 (3, 'Monitores'),
@@ -111,7 +111,7 @@ CREATE TABLE `tproducts` (
   `id_location` int(11) NOT NULL,
   `warranty` int(11) NOT NULL,
   `last_updated` date NOT NULL,
-  `activate` tinyint(4) NOT NULL DEFAULT 0
+  `active` tinyint(4) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -147,9 +147,9 @@ ALTER TABLE `tbrands`
   ADD UNIQUE KEY `brand_name` (`brand_name`);
 
 --
--- Indices de la tabla `tcategorys`
+-- Indices de la tabla `tcategories`
 --
-ALTER TABLE `tcategorys`
+ALTER TABLE `tcategories`
   ADD PRIMARY KEY (`id_category`),
   ADD UNIQUE KEY `category_name` (`category_name`);
 
@@ -188,9 +188,9 @@ ALTER TABLE `tbrands`
   MODIFY `id_brand` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
--- AUTO_INCREMENT de la tabla `tcategorys`
+-- AUTO_INCREMENT de la tabla `tcategories`
 --
-ALTER TABLE `tcategorys`
+ALTER TABLE `tcategories`
   MODIFY `id_category` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
@@ -220,7 +220,7 @@ ALTER TABLE `tstates`
 --
 ALTER TABLE `tproducts`
   ADD CONSTRAINT `tproducts_ibfk_1` FOREIGN KEY (`id_brand`) REFERENCES `tbrands` (`id_brand`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `tproducts_ibfk_2` FOREIGN KEY (`id_category`) REFERENCES `tcategorys` (`id_category`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `tproducts_ibfk_2` FOREIGN KEY (`id_category`) REFERENCES `tcategories` (`id_category`) ON UPDATE CASCADE,
   ADD CONSTRAINT `tproducts_ibfk_3` FOREIGN KEY (`id_state`) REFERENCES `tstates` (`id_state`) ON UPDATE CASCADE,
   ADD CONSTRAINT `tproducts_ibfk_4` FOREIGN KEY (`id_location`) REFERENCES `tlocations` (`id_location`) ON UPDATE CASCADE;
 COMMIT;
