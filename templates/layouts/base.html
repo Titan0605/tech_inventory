@@ -1,40 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title%}{% endblock%}</title>
-    <!-- CDN of Bootstrap-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- CSS of DataTables -->
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
-    <!-- CSS of the project -->
-    <link rel="stylesheet" href="/static/css/styles.css">
-    <!-- jQuery for DataTables) -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <!-- JS of DataTables -->
-    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
-    <!-- CDN of AwesomeFonts -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-    
-    
-    
-</head>
-
-<body>
-    <!--  -->
-    <header>{% block header%}{% endblock%}</header>
-    <main>
-        {% block content%}{% endblock%}
-    </main>
-    <footer>{% block footer%}{% endblock%}</footer>
-    <!--  -->
-    <!-- Script of the creation of datatables -->
-    <script src="{{ url_for('static', filename='js/datatables.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/inventory.js') }}"></script>    
-    <!-- Script of Bootstrap -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    
-</body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>{% block title%}{% endblock%}</title>
+		<link rel="stylesheet" href="https://cdn.datatables.net/2.2.2/css/dataTables.bootstrap5.min.css" > <!-- CDN de datatables Bootstrap5 para que tenga un diseño por defecto -->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"/> <!-- CDN de Bootstrap 5 para poder usarlo -->
+	</head>
+	<body>
+		<!--  -->
+		<header>
+			<header>
+				<nav class="navbar p-2 navbar-dark bg-dark">
+					<div class="container-fluid">
+						<h2 class="text-light fs-2 fw-bold">Tech Inventory</h2>
+					</div>
+				</nav>
+			</header>
+			{% block header%}{% endblock%}
+		</header>
+		<main class="p-5">
+			<table id="devicesTable" class="table table-striped table-hover table-bordered align-middle caption-top">
+                <!-- Si ves muchas clases es por que son clases de Bootstrap para el diseño -->
+				<caption>
+					List of devices
+				</caption>
+				<thead class="table-dark"> <!-- Dejamos solo los heads de la tabla -->
+					<tr class="align-middle">
+						<th scope="col">ID</th>
+						<th scope="col">SKU</th>
+						<th scope="col">Brand</th>
+						<th scope="col">Name</th>
+						<th scope="col">Category</th>
+						<th scope="col">Original Price</th>
+						<th scope="col">Discount Price</th>
+						<th scope="col">Stock</th>
+						<th scope="col">State</th>
+						<th scope="col">Location</th>
+						<th scope="col">Warranty</th>
+					</tr>
+				</thead>
+				<tbody></tbody> <!-- Abrimos el body de la tabla pero se deja vacio -->
+			</table>
+		</main>
+		<footer>{% block footer%}{% endblock%}</footer>
+		<!--  -->
+		<!-- Script of the creation of datatables -->
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script> <!-- Primero ponemos el script de bootstrap para que controle el css -->
+		<script src="{{ url_for('static', filename='js/jQuery.min.js') }}"></script> <!-- Luego ponemos el Jquery antes de las datatables ya que los datatable lo usan -->
+		<script src="{{ url_for('static', filename='js/datatable.min.js') }}"></script> <!-- Despues ponemos el script de los datatables -->
+		<script src="https://cdn.datatables.net/2.2.2/js/dataTables.bootstrap5.min.js"></script> <!-- Luego ponemos el script de datatables Bootstrap para que le de el disño por default -->
+		<script src="https://cdn.datatables.net/responsive/3.0.4/js/dataTables.responsive.min.js"></script> <!-- Por ultimo antes de nuestros JS ponemos para que los datatables sean responsive -->
+		<script src="{{ url_for('static', filename='js/datatables.js') }}"></script>
+		<script src="{{ url_for('static', filename='js/inventory.js') }}"></script>
+	</body>
 </html>

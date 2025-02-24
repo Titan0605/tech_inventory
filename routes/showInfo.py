@@ -14,6 +14,5 @@ def info():
     # print(data[0][1])
     # print(type(data[0][1]))
     products = productsModel.ProductsModel()
-
-    print(products.getProducts()) 
-    return render_template('index.html', products_list = products) #was change to return the products
+    # return render_template('index.html', products_list = products) #was change to return the products
+    return products.getProducts()
